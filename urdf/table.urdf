@@ -1,0 +1,44 @@
+<?xml version="1.0"?>
+<robot name="table"> <!-- Table made of boxes -->
+  <link name="table_base">
+    <visual>
+      <origin xyz="0 0 -0.039"/> <!-- 0.001 to avoid collision with robot-->
+      <geometry>
+        <box size="0.3 0.3 0.07" />
+      </geometry>
+      <material name="Red">
+        <color rgba="1 0 0 1"/>
+      </material>
+    </visual>
+    <collision>
+      <origin xyz="0 0 -0.039"/>
+      <geometry>
+        <box size="0.3 0.3 0.07" />
+      </geometry>
+    </collision>
+  </link>
+  
+  <joint name="j_foot_one" type="fixed">
+    <parent link="table_base"/>
+    <child link="l_foot_one"/>
+    <origin xyz="0 0 0"/>
+  </joint>
+        
+  <link name="l_foot_one">
+    <visual>
+      <origin xyz="0 0 -0.3"/>
+      <geometry>
+        <box size="0.07 0.07 0.46" />
+      </geometry>
+      <material name="Red">
+        <color rgba="1 0 0 1"/>
+      </material>
+    </visual>
+    <collision>
+      <origin xyz="0 0 -0.3"/>
+      <geometry>
+        <box size="0.07 0.07 0.46" />
+      </geometry>
+    </collision>
+  </link>
+</robot>

@@ -1,0 +1,94 @@
+<?xml version="1.0"?>
+<robot name="decor"> <!-- puzzle environment -->
+  <link name="decor_base">
+    <visual>
+      <origin xyz="0.27 0 -0.075"/><!-- -0.05 0 -0.55 -->
+      <geometry>
+        <box size="0.07 2 0.9" />
+      </geometry>
+      <material name="Blue">
+        <color rgba="0 0 1 1"/>
+      </material>
+    </visual>
+    <collision>
+      <origin xyz="0.27 0 -0.075"/>
+      <geometry>
+        <box size="0.07 2 0.9" />
+      </geometry>
+    </collision>
+  </link>
+  
+  <joint name="j_decor_one" type="fixed">
+    <parent link="decor_base"/>
+    <child link="l_decor_one"/>
+    <origin rpy="0 0 0" xyz="0 0 0"/>
+  </joint>
+        
+  <link name="l_decor_one">
+    <visual>
+      <origin xyz="0.27 0 1.025"/>
+      <geometry>
+        <box size="0.07 2 0.9" />
+      </geometry>
+      <material name="Blue">
+        <color rgba="0 0 1 1"/>
+      </material>
+    </visual>
+    <collision>
+      <origin xyz="0.27 0 1.025"/>
+      <geometry>
+        <box size="0.07 2 0.9" />
+      </geometry>
+    </collision>
+  </link>
+  
+  
+  <joint name="j_decor_two" type="fixed">
+    <parent link="l_decor_one"/>
+    <child link="l_decor_two"/>
+    <origin rpy="0 0 0" xyz="0 0 0"/>
+  </joint>
+        
+  <link name="l_decor_two">
+    <visual>
+      <origin xyz="0.27 -0.6 0.475"/>
+      <geometry>
+        <box size="0.07 0.8 0.2" />
+      </geometry>
+      <material name="Blue">
+        <color rgba="0 0 1 1"/>
+      </material>
+    </visual>
+    <collision>
+      <origin xyz="0.27 -0.6 0.475"/>
+      <geometry>
+        <box size="0.07 0.8 0.2" />
+      </geometry>
+    </collision>
+  </link>
+  
+  
+  <joint name="j_decor_three" type="fixed">
+    <parent link="l_decor_two"/>
+    <child link="l_decor_three"/>
+    <origin rpy="0 0 0" xyz="0 0 0"/>
+  </joint>
+        
+  <link name="l_decor_three">
+    <visual>
+      <origin xyz="0.27 0.6 0.475"/>
+      <geometry>
+        <box size="0.07 0.8 0.2" />
+      </geometry>
+      <material name="Blue">
+        <color rgba="0 0 1 1"/>
+      </material>
+    </visual>
+    <collision>
+      <origin xyz="0.27 0.6 0.475"/>
+      <geometry>
+        <box size="0.07 0.8 0.2" />
+      </geometry>
+    </collision>
+  </link>
+</robot>

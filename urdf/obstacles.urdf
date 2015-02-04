@@ -1,0 +1,44 @@
+<?xml version="1.0"?>
+<robot name="obstacles"> <!-- two high cylinders-->
+  <link name="obstacle_base">
+    <visual>
+      <origin xyz="-0.3 0.3 0.47"/>
+      <geometry>
+        <cylinder length="2." radius="0.15"/>
+      </geometry>
+      <material name="Orange">
+        <color rgba="1 0.4 0.3 1"/>
+      </material>
+    </visual>
+    <collision>
+      <origin xyz="-0.3 0.3 0.47"/>
+      <geometry>
+        <cylinder length="2." radius="0.15"/>
+      </geometry>
+    </collision>
+  </link>
+  
+  <joint name="j_object_one" type="fixed">
+    <parent link="obstacle_base"/>
+    <child link="l_object_one"/>
+    <origin xyz="0 0 0"/>
+  </joint>
+  
+  <link name="l_object_one">
+    <visual>
+      <origin xyz="-0.3 -0.3 0.47"/>
+      <geometry>
+        <cylinder length="2." radius="0.15"/>
+      </geometry>
+      <material name="Orange">
+        <color rgba="1 0.4 0.3 0.55"/>
+      </material>
+    </visual>
+    <collision>
+      <origin xyz="-0.3 -0.3 0.47"/>
+      <geometry>
+        <cylinder length="2." radius="0.15"/>
+      </geometry>
+    </collision>
+  </link>
+</robot>
