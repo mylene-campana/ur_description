@@ -211,13 +211,13 @@
     <parent link="wrist_3_link"/>
     <child link="ee_link"/>
     <!--<origin rpy="0.0 0.0 1.570796325" xyz="0.0 0.0823 0.0"/>-->
-    <origin rpy="1.570796325 0.0 0.0" xyz="0.0 0.13 0.0"/>
+    <origin rpy="1.570796325 0.0 0.0" xyz="0.0 0.18 0.0"/>
   </joint>
   
   <link name="ee_link"> <!-- CHANGED-->
       <visual>
           <geometry>
-            <cylinder length="0.1" radius="0.02"/>
+            <cylinder length="0.2" radius="0.01"/>
           </geometry>
           <material name="Blue">
             <color rgba="0.4 0.6 0.8 1"/>
@@ -225,7 +225,7 @@
         </visual>
         <collision>
           <geometry>
-            <cylinder length="0.1" radius="0.02"/>
+            <cylinder length="0.2" radius="0.01"/>
           </geometry>
         </collision>
         <inertial>

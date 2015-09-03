@@ -5,7 +5,6 @@
 from hpp.corbaserver.ur5_robot import Robot
 from hpp.corbaserver import Client
 from hpp.corbaserver import ProblemSolver
-import time
 
 robot = Robot ('ur5')
 cl = robot.client
@@ -25,32 +24,58 @@ r.loadObstacleModel ("ur_description","table","table")
 r.loadObstacleModel ("ur_description","wall","wall")
 r(q1)
 
+
+
+#ps.saveRoadmap ('/local/mcampana/devel/hpp/data/ur5-RRT.rdm') # not returning the same sol..
+#ps.selectPathPlanner ("VisibilityPrmPlanner")
+#ps.saveRoadmap ('/local/mcampana/devel/hpp/data/ur5-PRM.rdm')
+ps.readRoadmap ('/local/mcampana/devel/hpp/data/ur5-RRT.rdm')
+
+ps.solve ()
+ps.pathLength(0)
+
+ps.addPathOptimizer("GradientBased")
+ps.optimizePath (0)
+ps.numberPaths()
+ps.pathLength(ps.numberPaths()-1)
+pp(ps.numberPaths()-1)
+
+ps.clearPathOptimizers()
+ps.addPathOptimizer('RandomShortcut')
+ps.optimizePath (0)
+ps.pathLength(1)
+
+len(ps.getWaypoints (0))
+
+# Add light to scene
+lightName = "li"
+r.client.gui.addLight (lightName, r.windowId, 0.1, [0.8,0.8,0.8,0.7])
+r.client.gui.addToGroup (lightName, r.sceneName)
+r.client.gui.applyConfiguration (lightName, [-25,0,0,1,0,0,0])
+r.client.gui.refresh ()
+
+# Plot or remove frame
+from viewer_display_library import plotFrame
+plotFrame (r, "framy", [0,0,0], 0.5)
+r.client.gui.removeFromGroup ("frame1"+"framy",r.sceneName)
+r.client.gui.removeFromGroup ("frame2"+"framy",r.sceneName)
+r.client.gui.removeFromGroup ("frame3"+"framy",r.sceneName)
+
+pp.dt = 0.02
+r.startCapture ("capture","png")
+#pp(1)
+pp(ps.numberPaths()-1)
+r.stopCapture ()
+
 # Load obstacles in HPP #
 cl.obstacle.loadObstacleModel('ur_description','obstacles','') # cylinders
 cl.obstacle.loadObstacleModel('ur_description','table','')
 cl.obstacle.loadObstacleModel('ur_description','wall','') # wall with hole
 
-begin=time.time()
-ps.solve ()
-end=time.time()
-print "Solving time: "+str(end-begin)
-len(ps.getWaypoints (0))
-
-begin=time.time()
-ps.optimizePath (0)
-end=time.time()
-print "Optim time: "+str(end-begin)
-cl.problem.getIterationNumber ()
-ps.pathLength(0)
-ps.pathLength(1)
-
-begin=time.time()
-ps.optimizePath (1)
-end=time.time()
-print "Optim time: "+str(end-begin)
-cl.problem.getIterationNumber ()
-ps.pathLength(2)
-
+## ffmpeg commands
+ffmpeg -r 50 -i capture_0_%d.png -r 25 -vcodec libx264 video.mp4
+x=0; for i in *png; do counter=$(printf %03d $x); ln "$i" new"$counter".png; x=$(($x+1)); done
+ffmpeg -r 50 -i new%03d.png -r 25 -vcodec libx264 video.mp4
 
 
 ## DEBUG commands
