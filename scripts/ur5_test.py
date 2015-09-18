@@ -9,7 +9,6 @@ from hpp.corbaserver import ProblemSolver
 robot = Robot ('ur5')
 cl = robot.client
 ps =ProblemSolver (robot)
-#robot.setRootJointPosition([0,0,1.2,1,0,0,0]) # only in HPP, not displayed
 
 # q = ['shoulder_pan_joint', 'shoulder_lift_joint', 'elbow_joint', 'wrist_1_joint', 'wrist_2_joint', 'wrist_3_joint'] 6 DoF#
 q1 = [0, -1.57, 1.57, 0, 0, 0]; q2 = [0.2, -1.57, -1.8, 0, 0.8, 0]
@@ -24,26 +23,27 @@ r.loadObstacleModel ("ur_description","table","table")
 r.loadObstacleModel ("ur_description","wall","wall")
 r(q1)
 
+#ps.readRoadmap ('/local/mcampana/devel/hpp/data/ur5-RRT.rdm')
 
-
-#ps.saveRoadmap ('/local/mcampana/devel/hpp/data/ur5-RRT.rdm') # not returning the same sol..
 #ps.selectPathPlanner ("VisibilityPrmPlanner")
-#ps.saveRoadmap ('/local/mcampana/devel/hpp/data/ur5-PRM.rdm')
-ps.readRoadmap ('/local/mcampana/devel/hpp/data/ur5-RRT.rdm')
+#ps.selectPathValidation ("Dichotomy", 0.)
 
 ps.solve ()
 ps.pathLength(0)
 
+ps.addPathOptimizer('RandomShortcut')
+ps.optimizePath (0)
+ps.pathLength(1)
+
+ps.clearPathOptimizers()
 ps.addPathOptimizer("GradientBased")
 ps.optimizePath (0)
 ps.numberPaths()
 ps.pathLength(ps.numberPaths()-1)
+
 pp(ps.numberPaths()-1)
 
-ps.clearPathOptimizers()
-ps.addPathOptimizer('RandomShortcut')
-ps.optimizePath (0)
-ps.pathLength(1)
+r(q2)
 
 len(ps.getWaypoints (0))
 
@@ -63,7 +63,6 @@ r.client.gui.removeFromGroup ("frame3"+"framy",r.sceneName)
 
 pp.dt = 0.02
 r.startCapture ("capture","png")
-#pp(1)
 pp(ps.numberPaths()-1)
 r.stopCapture ()
 
