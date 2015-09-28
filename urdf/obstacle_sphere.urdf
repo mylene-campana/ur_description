@@ -1,19 +1,19 @@
 <?xml version="1.0"?>
-<robot name="obstacles"> <!-- two high cylinders-->
+<robot name="obstacles"> <!-- two spheres-->
   <link name="obstacle_base">
     <visual>
-      <origin xyz="-0.3 0.2 0.47"/>
+      <origin xyz="-0.3 0.3 0.8"/>
       <geometry>
-        <cylinder length="2." radius="0.07"/>
+        <sphere radius="0.2"/>
       </geometry>
       <material name="Orange">
-        <color rgba="1 0.4 0.3 0.3"/>
+        <color rgba="1 0.4 0.3 0.6"/>
       </material>
     </visual>
     <collision>
-      <origin xyz="-0.3 0.2 0.47"/>
+      <origin xyz="-0.3 0.3 0.8"/>
       <geometry>
-        <cylinder length="2." radius="0.07"/>
+        <sphere radius="0.2"/>
       </geometry>
     </collision>
   </link>
@@ -26,18 +26,18 @@
   
   <link name="l_object_one">
     <visual>
-      <origin xyz="-0.3 -0.2 0.47"/>
+      <origin xyz="0.3 -0.2 0.7"/>
       <geometry>
-        <cylinder length="2." radius="0.07"/>
+        <sphere radius="0.2"/>
       </geometry>
-      <material name="Orange">
-        <color rgba="1 0.4 0.3 1"/>
+      <material name="Green">
+        <color rgba="0.3 1 0.3 0.7"/>
       </material>
     </visual>
     <collision>
-      <origin xyz="-0.3 -0.2 0.47"/>
+      <origin xyz="0.3 -0.2 0.7"/>
       <geometry>
-        <cylinder length="2." radius="0.07"/>
+        <sphere radius="0.2"/>
       </geometry>
     </collision>
   </link>

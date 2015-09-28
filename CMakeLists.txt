@@ -2,17 +2,17 @@
 # Author: Mylene Campana
 #
 # This file is part of ur_description.
-# hpp-hrp2 is free software: you can redistribute it
+# ur_description is free software: you can redistribute it
 # and/or modify it under the terms of the GNU Lesser General Public
 # License as published by the Free Software Foundation, either version
 # 3 of the License, or (at your option) any later version.
 #
-# hpp-hrp2 is distributed in the hope that it will be
+# ur_description is distributed in the hope that it will be
 # useful, but WITHOUT ANY WARRANTY; without even the implied warranty
 # of MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the GNU
 # General Lesser Public License for more details.  You should have
 # received a copy of the GNU Lesser General Public License along with
-# hpp-hrp2.  If not, see
+# ur_description.  If not, see
 # <http://www.gnu.org/licenses/>.
 
 # Requires at least CMake 2.6 to configure the package.
@@ -33,21 +33,22 @@ ADD_REQUIRED_DEPENDENCY ("hpp-corbaserver >= 3")
 SET(CATKIN_PACKAGE_SHARE_DESTINATION
   ${CMAKE_INSTALL_DATAROOTDIR}/${PROJECT_NAME})
 
-install(FILES urdf/ur5_robot.urdf
+install(FILES
+  urdf/ur5_robot.urdf
+  urdf/wall.urdf
+  urdf/table.urdf
+  urdf/obstacles.urdf
+  urdf/obstacle_sphere.urdf
   DESTINATION ${CATKIN_PACKAGE_SHARE_DESTINATION}/urdf
   )
-install(FILES urdf/wall.urdf
-  DESTINATION ${CATKIN_PACKAGE_SHARE_DESTINATION}/urdf
-  )
-install(FILES urdf/table.urdf
-  DESTINATION ${CATKIN_PACKAGE_SHARE_DESTINATION}/urdf
-  )
-install(FILES urdf/obstacles.urdf
-  DESTINATION ${CATKIN_PACKAGE_SHARE_DESTINATION}/urdf
-  )
+
 install(FILES srdf/ur5_robot.srdf 
   DESTINATION ${CATKIN_PACKAGE_SHARE_DESTINATION}/srdf
   )
+
+install(DIRECTORY meshes/
+  DESTINATION ${CATKIN_PACKAGE_SHARE_DESTINATION}/meshes)
+
 install (FILES
   src/hpp/corbaserver/ur5_robot/robot.py
   src/hpp/corbaserver/ur5_robot/__init__.py
