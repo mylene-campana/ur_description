@@ -1,0 +1,38 @@
+<?xml version="1.0"?>
+<robot name="carton">
+  <link name="base_link">
+    <visual>
+      <origin xyz="0.4 -0.1 0" rpy="0 0 0.7" />
+      <geometry>
+        <mesh filename="package://ur_description/meshes/carton.dae"/>
+      </geometry>
+    </visual>
+    <collision>
+      <origin xyz="0.4 -0.1 0" rpy="0 0 0.7" />
+      <geometry>
+        <mesh filename="package://ur_description/meshes/carton.dae"/>
+      </geometry>
+    </collision>
+  </link>
+
+  <joint name="j_decor_one" type="fixed">
+    <parent link="base_link"/>
+    <child link="l_decor_one"/>
+    <origin rpy="0 0 0" xyz="0 0 0"/>
+  </joint>
+
+  <link name="l_decor_one">
+    <visual>
+      <origin xyz="0.4 -0.1 0" rpy="0 0 0.7" />
+      <geometry>
+        <mesh filename="package://ur_description/meshes/carton.dae"/>
+      </geometry>
+    </visual>
+    <collision>
+      <origin xyz="0.4 -0.1 0" rpy="0 0 0.7" />
+      <geometry>
+        <mesh filename="package://ur_description/meshes/carton.stl"/>
+      </geometry>
+    </collision>
+  </link>
+</robot>

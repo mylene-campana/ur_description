@@ -4,16 +4,16 @@
     <visual>
       <origin xyz="-0.3 0.3 0.8"/>
       <geometry>
-        <sphere radius="0.2"/>
+        <sphere radius="0.18"/> <!-- original geom -->
       </geometry>
       <material name="Orange">
-        <color rgba="1 0.4 0.3 0.6"/>
+        <color rgba="1 0.4 0.3 0.8"/>
       </material>
     </visual>
     <collision>
       <origin xyz="-0.3 0.3 0.8"/>
       <geometry>
-        <sphere radius="0.2"/>
+        <mesh filename="package://ur_description/meshes/sphere.dae" scale="0.18 0.18 0.18"/>
       </geometry>
     </collision>
   </link>
@@ -28,16 +28,16 @@
     <visual>
       <origin xyz="0.3 -0.2 0.7"/>
       <geometry>
-        <sphere radius="0.2"/>
+        <sphere radius="0.18"/>
       </geometry>
       <material name="Green">
-        <color rgba="0.3 1 0.3 0.7"/>
+        <color rgba="0.3 1 0.3 0.8"/>
       </material>
     </visual>
     <collision>
       <origin xyz="0.3 -0.2 0.7"/>
       <geometry>
-        <sphere radius="0.2"/>
+        <mesh filename="package://ur_description/meshes/sphere.dae" scale="0.18 0.18 0.18"/>
       </geometry>
     </collision>
   </link>

@@ -1,0 +1,20 @@
+<?xml version="1.0"?>
+<robot name="table"> <!-- Table made of boxes -->
+  <link name="table_base">
+    <visual>
+      <origin xyz="0 0 -0.01"/> <!-- 0.001 to avoid collision with robot-->
+      <geometry>
+        <box size="2 2 0.01" />
+      </geometry>
+      <material name="Something">
+        <color rgba="0.7 0.6 0.9 1"/>
+      </material>
+    </visual>
+    <collision>
+      <origin xyz="0 0 -0.01"/>
+      <geometry>
+        <box size="2 2 0.01" />
+      </geometry>
+    </collision>
+  </link>
+</robot>

@@ -35,14 +35,20 @@ SET(CATKIN_PACKAGE_SHARE_DESTINATION
 
 install(FILES
   urdf/ur5_robot.urdf
+  urdf/ur5_with_gripper.urdf
   urdf/wall.urdf
   urdf/table.urdf
   urdf/obstacles.urdf
   urdf/obstacle_sphere.urdf
+  urdf/box.urdf
+  urdf/carton.urdf
+  urdf/large_table.urdf
   DESTINATION ${CATKIN_PACKAGE_SHARE_DESTINATION}/urdf
   )
 
-install(FILES srdf/ur5_robot.srdf 
+install(FILES
+  srdf/ur5_robot.srdf
+  srdf/ur5_with_gripper.srdf 
   DESTINATION ${CATKIN_PACKAGE_SHARE_DESTINATION}/srdf
   )
 
@@ -53,5 +59,10 @@ install (FILES
   src/hpp/corbaserver/ur5_robot/robot.py
   src/hpp/corbaserver/ur5_robot/__init__.py
   DESTINATION ${PYTHON_SITELIB}/hpp/corbaserver/ur5_robot)
-  
+
+install (FILES
+  src/hpp/corbaserver/ur5_with_gripper/robot.py
+  src/hpp/corbaserver/ur5_with_gripper/__init__.py
+  DESTINATION ${PYTHON_SITELIB}/hpp/corbaserver/ur5_with_gripper)
+ 
 SETUP_PROJECT_FINALIZE()
